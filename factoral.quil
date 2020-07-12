@@ -1,0 +1,21 @@
+# A classic factorial program
+
+DECLARE count INTEGER 
+DECLARE ans INTEGER
+
+DECLARE cond BIT # We can store comparison results in bits
+
+# Initialize
+MOVE count 1
+MOVE ans 1
+
+# Begin loop
+LABEL @fact_loop
+LT cond count 45 # Calculate factorial(44)
+
+JUMP-UNLESS @end cond
+MUL ans count
+ADD count 1
+JUMP @fact_loop
+
+LABEL @end
