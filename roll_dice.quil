@@ -1,4 +1,9 @@
 # This is a quantum coin flip
-DECLARE ro BIT[1]
-H 0
+
+DECLARE ro BIT[1] # For more information about declartions see 
+# https://github.com/rigetti/quil/blob/master/spec/Quil.md#4-measurement-and-classical-memory
+
+H 0 # Apply Haddamrd to quantum bit "0". For more info see
+# https://github.com/rigetti/quil/blob/master/spec/Quil.md#standard-gates
+
 MEASURE 0 ro[0]
