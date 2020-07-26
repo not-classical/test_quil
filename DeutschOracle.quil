@@ -1,0 +1,54 @@
+
+# Creating space in memory to store results #
+DECLARE ro BIT[2]
+
+# Flipping |0> to |1> #
+X 0
+X 1
+ 
+# Putting Q0 & Q1 into a superposition #
+H 0
+H 1
+
+# BLACK BOX AREA #
+
+########################################
+# Note: Quil output ket contains q0 at right most position in output
+
+# Expected Output: |01> 
+DEFCIRCUIT NEGATION Input Output:
+	CNOT Output Input
+	X Output
+
+# Expected Output: |11>
+DEFCIRCUIT CONSTANT-0 Input Output:
+	NOP
+
+# Expected Output: |11>
+DEFCIRCUIT CONSTANT-1 Input Output: 
+	X Output
+
+# Expected Output: |01>
+DEFCIRCUIT IDENTITY Input Output:
+	CNOT Output Input
+
+# Comment out all except one to run program #
+
+#NEGATION 0 1
+
+#CONSTANT-0 0 1
+
+#CONSTANT-1 0 1 
+
+IDENTITY 0 1
+
+#########################################
+ 
+# 'Undos' the superposition from before #
+H 0
+H 1
+ 
+# Measuring the results and storing into classical memory #
+MEASURE 0 ro[0]
+MEASURE 1 ro[1]
+
